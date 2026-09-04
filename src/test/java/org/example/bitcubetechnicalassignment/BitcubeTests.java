@@ -10,12 +10,24 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class BitcubeTests extends BitcubeBase
 {
+
+    void clickCalcuteButton()
+    {
+        Locator calculateButton = page.locator("#getFactorial");
+        calculateButton.click();
+    }
+    void fillInTextbox(String factorOfNumber)
+    {
+        Locator numberInput = page.locator("#number");
+        numberInput.fill(factorOfNumber);
+    }
+
+
     @Test
     void validateStylingForEmptyInput()
     {
         String expectedStyle = "border: 2px solid red";
-        Locator calculateButton = page.locator("#getFactorial");
-        calculateButton.click();
+        clickCalcuteButton();
         String style = page.locator("#number").getAttribute("style");
 
         System.out.println("Style: " + style);
@@ -28,11 +40,9 @@ public class BitcubeTests extends BitcubeBase
     {
         String expectedNumber = "479001600";
         String factorOfNumber = "12";
-        Locator numberInput = page.locator("#number");
-        numberInput.fill(factorOfNumber);
 
-        Locator calculateButton = page.locator("#getFactorial");
-        calculateButton.click();
+        fillInTextbox(factorOfNumber);
+        clickCalcuteButton();
 
         Locator result = page.locator("#resultDiv");
         assertThat(result).containsText("The factorial of ");
@@ -59,11 +69,9 @@ public class BitcubeTests extends BitcubeBase
             }
         });
 
-        Locator numberInput = page.locator("#number");
-        numberInput.fill(factorOfNumber);
-
-        Locator calculateButton = page.locator("#getFactorial");
-        calculateButton.click();
+        fillInTextbox(factorOfNumber);
+        clickCalcuteButton();
+        
         page.waitForTimeout(1000);
 
         assertNotNull(apiRequest.get(), "Factorial API request was not made");
