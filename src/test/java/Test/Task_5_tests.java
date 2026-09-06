@@ -1,33 +1,34 @@
-package org.example.bitcubetechnicalassignment;
+package Test;
 
-import com.microsoft.playwright.*;
-import org.junit.jupiter.api.*;
+import Base.BaseTest;
+import Pages.FactorialPage;
+import Utility.SimpleTestListener;
+import com.microsoft.playwright.Locator;
+import com.microsoft.playwright.Request;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
 
 import java.util.concurrent.atomic.AtomicReference;
-
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class BitcubeTests extends BitcubeBase
+@Listeners(SimpleTestListener.class)
+public class Task_5_tests extends BaseTest
 {
-
-    void clickCalcuteButton()
+    private FactorialPage factorialPage;
+    @BeforeMethod
+    public void setupTest()
     {
-        Locator calculateButton = page.locator("#getFactorial");
-        calculateButton.click();
+        factorialPage = new FactorialPage(page);
     }
-    void fillInTextbox(String factorOfNumber)
-    {
-        Locator numberInput = page.locator("#number");
-        numberInput.fill(factorOfNumber);
-    }
-
 
     @Test
     void validateStylingForEmptyInput()
     {
+        page.navigate("http://qainterview.pythonanywhere.com");
         String expectedStyle = "border: 2px solid red";
-        clickCalcuteButton();
+        factorialPage.clickCalcuteButton();
         String style = page.locator("#number").getAttribute("style");
 
         System.out.println("Style: " + style);
@@ -38,13 +39,15 @@ public class BitcubeTests extends BitcubeBase
     @Test
     void calculateFactorialOf12()
     {
+        page.navigate("http://qainterview.pythonanywhere.com");
         String expectedNumber = "479001600";
         String factorOfNumber = "12";
 
-        fillInTextbox(factorOfNumber);
-        clickCalcuteButton();
+        factorialPage.fillInTextbox(factorOfNumber);
+        factorialPage.clickCalcuteButton();
 
         Locator result = page.locator("#resultDiv");
+
         assertThat(result).containsText("The factorial of ");
 
         String text = result.textContent().trim();
@@ -56,6 +59,7 @@ public class BitcubeTests extends BitcubeBase
     @Test
     void validateFactorialApiRequest()
     {
+        page.navigate("http://qainterview.pythonanywhere.com");
         String factorOfNumber = "5";
         String expectedMethod = "POST";
         String factorialUri = "/factorial";
@@ -69,9 +73,9 @@ public class BitcubeTests extends BitcubeBase
             }
         });
 
-        fillInTextbox(factorOfNumber);
-        clickCalcuteButton();
-        
+        factorialPage.fillInTextbox(factorOfNumber);
+        factorialPage.clickCalcuteButton();
+
         page.waitForTimeout(1000);
 
         assertNotNull(apiRequest.get(), "Factorial API request was not made");

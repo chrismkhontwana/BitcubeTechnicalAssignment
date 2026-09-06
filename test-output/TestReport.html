@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>Test Report</title>
+<style>
+body { font-family: Arial; margin: 30px; }
+table { border-collapse: collapse; width: 100%; }
+th, td { border: 1px solid #ddd; padding: 10px; }
+th { background: #eee; }
+.pass { color: green; font-weight: bold; }
+.fail { color: red; font-weight: bold; }
+img { width: 400px; }
+</style>
+</head>
+<body>
+<h1>Playwright Test Report</h1>
+<table>
+<tr>
+<th>Test Case</th>
+<th>Status</th>
+<th>Screenshot</th>
+</tr>
+<tr><td>TC1_Calculate factorial of 0</td><td class='pass'>PASS</td><td></td></tr>
+<tr><td>TC2_Calculate factorial of 1</td><td class='pass'>PASS</td><td></td></tr>
+<tr><td>TC3_Calculate factorial of 3</td><td class='pass'>PASS</td><td></td></tr>
+<tr><td>TC4_Calculate factorial of 20</td><td class='pass'>PASS</td><td></td></tr>
+<tr><td>TC5_Click calculate with empty textbox</td><td class='pass'>PASS</td><td></td></tr>
+<tr><td>TC6_Calculate factorial of -1</td><td class='fail'>FAIL</td><td>Screenshot failed: class Test.Task_4_functional_tests cannot be cast to class Base.TaskBase (Test.Task_4_functional_tests and Base.TaskBase are in unnamed module of loader 'app')</td></tr>
+<tr><td>TC7_Calculate factorial of 5.5</td><td class='pass'>PASS</td><td></td></tr>
+<tr><td>TC8_Calculate factorial of a</td><td class='pass'>PASS</td><td></td></tr>
+<tr><td>TC9_Calculate factorial of 1c</td><td class='pass'>PASS</td><td></td></tr>
+<tr><td>TC10_Calculate factorial of %^&</td><td class='pass'>PASS</td><td></td></tr>
+<tr><td>TC11_Calculate factorial of 2 and click calculate twice</td><td class='pass'>PASS</td><td></td></tr>
+<tr><td>TC12_Calculate factorial of 999</td><td class='fail'>FAIL</td><td>Screenshot failed: class Test.Task_4_functional_tests cannot be cast to class Base.TaskBase (Test.Task_4_functional_tests and Base.TaskBase are in unnamed module of loader 'app')</td></tr>
+<tr><td>ValidateAboutLinkText</td><td class='pass'>PASS</td><td></td></tr>
+<tr><td>ValidatePrivacyLinkText</td><td class='fail'>FAIL</td><td>Screenshot failed: class Test.Task_4_UI_tests cannot be cast to class Base.TaskBase (Test.Task_4_UI_tests and Base.TaskBase are in unnamed module of loader 'app')</td></tr>
+<tr><td>ValidateTermsAndConditionsLinkText</td><td class='fail'>FAIL</td><td>Screenshot failed: class Test.Task_4_UI_tests cannot be cast to class Base.TaskBase (Test.Task_4_UI_tests and Base.TaskBase are in unnamed module of loader 'app')</td></tr>
+<tr><td>verifyPageTitle</td><td class='fail'>FAIL</td><td>Screenshot failed: class Test.Task_4_UI_tests cannot be cast to class Base.TaskBase (Test.Task_4_UI_tests and Base.TaskBase are in unnamed module of loader 'app')</td></tr>
+<tr><td>calculateFactorialOf12</td><td class='pass'>PASS</td><td></td></tr>
+<tr><td>validateFactorialApiRequest</td><td class='pass'>PASS</td><td></td></tr>
+<tr><td>validateStylingForEmptyInput</td><td class='pass'>PASS</td><td></td></tr>
+</table>
+</body>
+</html>

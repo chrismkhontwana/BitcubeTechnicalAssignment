@@ -1,0 +1,9 @@
+<suite name="PlaywrightSuite">
+    <test name = "FullRegression">
+        <classes>
+            <class name="Test.Task_4_functional_tests"/>
+            <class name="Test.Task_4_UI_tests"/>
+            <class name="Test.Task_5_tests"/>
+        </classes>
+    </test>
+</suite>
