@@ -20,7 +20,8 @@ Maven	- Dependency management
 Apache POI -	Reading Excel test data
 IntelliJ IDEA -	Development environment
 
-📁** Project Structure**
+📁**Project Structure**
+
 BitcubeTechnicalAssignment
 │
 ├── pom.xml
